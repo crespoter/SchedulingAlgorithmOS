@@ -91,7 +91,11 @@ public class preemptive {
 				}
 				System.out.println(time+"\t\t"+executing);
 				programs[executing].burstTime--;
+				updateWaitingTime(programs,time);
 				time++;
+			}
+			for(int i=0;i<10;i++){
+				System.out.println(i+"\t\t"+programs[i].waitingTime);
 			}
 		}
 }
