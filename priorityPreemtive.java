@@ -72,7 +72,7 @@ public class priorityPreemtive {
 			t=programs[i].setArrivalTime(t);
 			programs[i].print();
 		}
-		System.out.println("Time\tExecutingPid\tPriority");
+		System.out.println("Time\tExecutingPid");
 		int executing=0;
 		for(int time=0;!allFinished(programs);){
 			int minPriorityIndex=-1;

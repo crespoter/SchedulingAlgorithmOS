@@ -4,7 +4,7 @@ public class roundRobin {
 		public int burstTime;
 		public int pid;
 		public boolean executing;
-		boolean robin;
+		public boolean robin;
 		public boolean executed;
 		public int arrivalTime;
 		int waitingTime;
