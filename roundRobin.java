@@ -1,5 +1,89 @@
 import java.util.*;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 public class roundRobin {
+	JFrame f;
+	roundRobin(program[] p , int counter){
+		if(counter==0)
+		{
+			f=new JFrame();  
+		    f.setTitle("Inputs");
+		    String[][] data=new String[100][];
+		    for(int i=0;i<100;i++){
+		    	data[i]=new String[4];
+		    }
+		    String column[]={"P.ID","Arrival Time","Burst Time","Priority"};  
+		    for(int i=0;i<10;i++){
+		    	data[i][0]=Integer.toString(p[i].pid);
+		    	data[i][1]=Integer.toString(p[i].arrivalTime);
+		    	data[i][2]=Integer.toString(p[i].burstTime);
+		    }
+		    
+		      
+		    JTable jt=new JTable(data,column);  
+		    jt.setBounds(30,40,200,300);  
+		      
+		    JScrollPane sp=new JScrollPane(jt);  
+		    f.add(sp);  
+		      
+		    f.setSize(300,400);  
+		//  f.setLayout(null);  
+		    f.setVisible(true);  
+			
+		}
+		else{
+			
+			f=new JFrame();  
+			if(counter==1)
+			{
+				f.setTitle("Preemptive Burst");
+			}
+			else if(counter==2)
+			{
+				f.setTitle("Round Robin");
+			}
+			else if(counter==3)
+			{
+				f.setTitle("Non Preemptive Burst");
+			}
+			
+			else if(counter==4)
+			{
+				f.setTitle("First Come First Serve");
+			}
+			else if(counter==5)
+			{
+				f.setTitle("Non Preemptive Priority");
+			}
+			else
+			{
+				f.setTitle("Preemtive Priority");
+			}  
+		    String[][] data=new String[100][];
+		    for(int i=0;i<100;i++){
+		    	data[i]=new String[2];
+		    }
+		    String column[]={"P.ID","Waiting Time"};  
+		    for(int i=0;i<10;i++){
+		    	data[i][0]=Integer.toString(p[i].pid);
+		    	data[i][1]=Integer.toString(p[i].waitingTime);
+		    }
+		    
+		      
+		    JTable jt=new JTable(data,column);  
+		    jt.setBounds(30,40,200,300);  
+		      
+		    JScrollPane sp=new JScrollPane(jt);  
+		    f.add(sp);  
+		      
+		    f.setSize(300,400);  
+		//  f.setLayout(null);  
+		    f.setVisible(true);  
+	
+		}
+
+	}
 	static class program{
 		public int burstTime;
 		public int pid;
@@ -70,6 +154,7 @@ static void updateWaitingTime(program[] programs,int endTime){
 			t=programs[i].setArrivalTime(t);
 			programs[i].print();
 		}
+		new roundRobin(programs,0);
 		System.out.println("Time\tExecutingPid");
 		int executing=0;
 		for(int time=0;!allFinished(programs);)
@@ -114,6 +199,7 @@ static void updateWaitingTime(program[] programs,int endTime){
 		for(int i=0;i<10;i++){
 			System.out.println(i+"\t\t"+programs[i].waitingTime);
 		}
+		new roundRobin(programs,2);
 	}
 }
 
